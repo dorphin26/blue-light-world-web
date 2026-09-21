@@ -5,24 +5,27 @@ import { journalStore } from "./systems/journalStore";
 import { mobileInputStore } from "./systems/mobileInputStore";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <main id="game-shell">
-    <div id="game-root"></div>
-    <div class="hud">
-      <div class="brand">푸른빛의 세계 · PROLOGUE v0.1</div>
-      <button class="journal-button" id="journal-button" type="button">탐험 일지 (J)</button>
-      <section class="panel" id="journal-panel" hidden>
-        <h2>탐험 일지</h2>
-        <p>저택에서 발견한 정보가 이곳에 기록됩니다.</p>
-        <div id="journal-entries"></div>
-      </section>
-      <div class="help">WASD 이동 · E 조사 · J 일지</div>
+  <main id="viewport-shell">
+    <section id="game-shell">
+      <div id="game-root"></div>
+      <div class="hud">
+        <div class="brand">푸른빛의 세계 · PROLOGUE v0.1</div>
+        <button class="journal-button" id="journal-button" type="button">탐험 일지 (J)</button>
+        <section class="panel" id="journal-panel" hidden>
+          <h2>탐험 일지</h2>
+          <p>저택에서 발견한 정보가 이곳에 기록됩니다.</p>
+          <div id="journal-entries"></div>
+        </section>
+        <div class="help">WASD 이동 · E 조사 · J 일지</div>
 
-      <div class="touch-controls" aria-label="모바일 이동 패드">
-        <div class="joystick" id="joystick">
-          <div class="joystick-knob" id="joystick-knob"></div>
+        <div class="touch-controls" aria-label="모바일 이동 패드">
+          <div class="joystick" id="joystick">
+            <div class="joystick-knob" id="joystick-knob"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <div class="rotate-hint">기기를 가로로 돌려 플레이해 주세요.</div>
   </main>
 `;
 
@@ -31,9 +34,10 @@ const config: Phaser.Types.Core.GameConfig = {
   parent: "game-root",
   backgroundColor: "#0e1720",
   scale: {
-    mode: Phaser.Scale.RESIZE,
-    width: "100%",
-    height: "100%"
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: 1280,
+    height: 720
   },
   physics: {
     default: "arcade",
