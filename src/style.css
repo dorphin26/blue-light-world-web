@@ -25,7 +25,7 @@ body {
 #viewport-shell {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   background: #000;
@@ -33,9 +33,9 @@ body {
 
 #game-shell {
   position: relative;
-  width: min(100vw, calc(100vh * 16 / 9));
+  width: min(100vw, calc(100dvh * 16 / 9));
   aspect-ratio: 16 / 9;
-  max-height: 100vh;
+  max-height: 100dvh;
   overflow: hidden;
   background: #0b1018;
 }
@@ -132,8 +132,8 @@ body {
 .touch-controls {
   pointer-events: auto;
   position: absolute;
-  left: 18px;
-  bottom: 18px;
+  left: max(18px, env(safe-area-inset-left));
+  bottom: max(18px, env(safe-area-inset-bottom));
   display: none;
 }
 
