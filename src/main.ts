@@ -9,7 +9,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <section id="game-shell">
       <div id="game-root"></div>
       <div class="hud">
-        <div class="brand">푸른빛의 세계 · PROLOGUE v0.1</div>
+        <div class="brand">푸른빛의 세계 · PROLOGUE <span id="build-version"></span></div>
         <button class="journal-button" id="journal-button" type="button">탐험 일지 (J)</button>
         <section class="panel" id="journal-panel" hidden>
           <h2>탐험 일지</h2>
@@ -56,6 +56,8 @@ const button = document.querySelector<HTMLButtonElement>("#journal-button")!;
 const entries = document.querySelector<HTMLElement>("#journal-entries")!;
 const joystick = document.querySelector<HTMLElement>("#joystick")!;
 const knob = document.querySelector<HTMLElement>("#joystick-knob")!;
+const buildVersion = document.querySelector<HTMLElement>("#build-version")!;
+buildVersion.textContent = __BUILD_VERSION__;
 
 function renderJournal() {
   const items = journalStore.getAll();
