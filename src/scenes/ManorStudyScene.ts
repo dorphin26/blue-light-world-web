@@ -115,9 +115,10 @@ export class ManorStudyScene extends Phaser.Scene {
   update(_time: number, delta: number) {
     if (!this.keys || !this.player) return;
 
+    const mobile = mobileInputStore.get();
     const direction = new Phaser.Math.Vector2(
-      Number(this.keys.right.isDown) - Number(this.keys.left.isDown),
-      Number(this.keys.down.isDown) - Number(this.keys.up.isDown)
+      Number(this.keys.right.isDown) - Number(this.keys.left.isDown) + mobile.x,
+      Number(this.keys.down.isDown) - Number(this.keys.up.isDown) + mobile.y
     );
 
     if (direction.lengthSq() > 0) {
