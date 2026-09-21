@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import { journalStore } from "../systems/journalStore";\nimport { mobileInputStore } from "../systems/mobileInputStore";
+import { journalStore } from "../systems/journalStore";
+import { mobileInputStore } from "../systems/mobileInputStore";
 
 type Interactable = {
   id: string;
