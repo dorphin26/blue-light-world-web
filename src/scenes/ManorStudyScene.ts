@@ -199,8 +199,25 @@ export class ManorStudyScene extends Phaser.Scene {
 
   private keepPlayerInRoom() {
     const cx = this.scale.width / 2;
-    const cy = this.scale.height / 2;
-    this.player.x = Phaser.Math.Clamp(this.player.x, cx - 300, cx + 300);
-    this.player.y = Phaser.Math.Clamp(this.player.y, cy - 160, cy + 150);
+    const cy = this.scale.height / 2 - 20;
+
+    const halfWidth = 330;
+    const halfHeight = 180;
+    const playerPadding = 18;
+
+    const dx = this.player.x - cx;
+    const dy = this.player.y - cy;
+
+    const usableHalfWidth = halfWidth - playerPadding;
+    const usableHalfHeight = halfHeight - playerPadding;
+    const diamondDistance =
+      Math.abs(dx) / usableHalfWidth +
+      Math.abs(dy) / usableHalfHeight;
+
+    if (diamondDistance <= 1) return;
+
+    const scale = 1 / diamondDistance;
+    this.player.x = cx + dx * scale;
+    this.player.y = cy + dy * scale;
   }
 }
